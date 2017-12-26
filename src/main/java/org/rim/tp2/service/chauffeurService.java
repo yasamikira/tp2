@@ -1,15 +1,17 @@
 package org.rim.tp2.service;
 
-import org.rim.tp2.domain.Chauffeur;
+import org.rim.tp2.domain.vo.ChauffeurVO;
+import org.rim.tp2.domain.vo.CreateChauffeurVO;
+import org.rim.tp2.domain.vo.UpdateChauffeurVO;
 
-public interface chauffeurService {
+public interface ChauffeurService {
 	
-	 	Chauffeur getChauffeurById(Long id);
+	 	ChauffeurVO getChauffeurById(Long id);
 	 	
-	 	Chauffeur createChauffeur(Chauffeur chauffeur);
+	 	ChauffeurVO createChauffeur(CreateChauffeurVO chauffeur);
 	 	
-	 	Chauffeur updateChauffeur(Chauffeur chauffeur);
+	 	ChauffeurVO updateChauffeur(UpdateChauffeurVO chauffeur);
 	 	
-	    void deleteChauffeur(Long id);
+	 	ChauffeurVO deleteChauffeur(Long id);
 
 }

@@ -1,6 +1,8 @@
 package org.rim.tp2.domain.vo;
 
-public class createVehiculeVO {
+import java.io.Serializable;
+
+public class CreateVehiculeVO implements Serializable{
 	
 	
 	private String marque;

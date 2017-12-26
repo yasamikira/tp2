@@ -1,6 +1,8 @@
 package org.rim.tp2.domain.vo;
 
-public class createGroupeVO {
+import java.io.Serializable;
+
+public class CreateGroupeVO implements Serializable{
 
 	
 	private String nom;

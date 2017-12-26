@@ -1,13 +1,10 @@
 package org.rim.tp2.controller;
 
-import org.rim.tp2.domain.Vehicule;
-import org.rim.tp2.domain.assembler.vehiculeAssembler;
-import org.rim.tp2.domain.vo.createVehiculeVO;
-import org.rim.tp2.domain.vo.updateVehiculeVO;
-import org.rim.tp2.domain.vo.vehiculeVO;
-import org.rim.tp2.service.vehiculeService;
+import org.rim.tp2.domain.vo.CreateVehiculeVO;
+import org.rim.tp2.domain.vo.UpdateVehiculeVO;
+import org.rim.tp2.domain.vo.VehiculeVO;
+import org.rim.tp2.service.VehiculeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,39 +12,41 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/vehicule")
-public class vehiculeController {
+public class VehiculeController {
 
-	@Autowired
-    private vehiculeAssembler vehiculeAssembler;
+//	@Autowired
+//    private VehiculeAssembler vehiculeAssembler;
  
     @Autowired
-    private vehiculeService vehiculeService;
+    private VehiculeService vehiculeService;
  
     //@ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public vehiculeVO getvehicule(@PathVariable("id") Long id) {
-        return vehiculeAssembler.tovehiculeVO(vehiculeService.getVehiculeById(id));
+    public VehiculeVO getvehicule(@PathVariable("id") Long id) {
+        //return vehiculeAssembler.tovehiculeVO(vehiculeService.getVehiculeById(id));
+    	return vehiculeService.getVehiculeById(id);
     }
  
     @PostMapping
-    public vehiculeVO createvehicule(@RequestBody createVehiculeVO userVO) {
-        Vehicule g = vehiculeAssembler.tovehicule(userVO);
-        Vehicule savedvehicule = vehiculeService.createVehicule(g);
-        return vehiculeAssembler.tovehiculeVO(savedvehicule);
+    public VehiculeVO createvehicule(@RequestBody CreateVehiculeVO v) {
+        //Vehicule g = vehiculeAssembler.tovehicule(userVO);
+        //Vehicule savedvehicule = vehiculeService.createVehicule(userVO);
+        return vehiculeService.createVehicule(v);//vehiculeAssembler.tovehiculeVO(savedvehicule);
     }
  
     @PutMapping
-    public vehiculeVO updatevehicule(@RequestBody updateVehiculeVO updatevehiculeVO) {
-        Vehicule g = vehiculeAssembler.tovehicule(updatevehiculeVO);
-        Vehicule updatedvehicule = vehiculeService.updateVehicule(g);
-        return vehiculeAssembler.tovehiculeVO(g);
+    public VehiculeVO updatevehicule(@RequestBody UpdateVehiculeVO v) {
+       // Vehicule g = vehiculeAssembler.tovehicule(updatevehiculeVO);
+        //Vehicule updatedvehicule = vehiculeService.UpdateVehicule(g);
+        return vehiculeService.updateVehicule(v);
     }
  
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        vehiculeService.deleteVehicule(id);
+    public VehiculeVO delete(@PathVariable("id") Long id) {
+       return vehiculeService.deleteVehicule(id);
     }
 }

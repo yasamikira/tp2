@@ -1,8 +1,9 @@
 package org.rim.tp2.domain.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class chauffeurVO {
+public class ChauffeurVO implements Serializable{
 
 	private Long chauffeurId;
 	private String fname;

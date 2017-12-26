@@ -1,6 +1,8 @@
 package org.rim.tp2.domain.vo;
 
-public class updateVehiculeVO {
+import java.io.Serializable;
+
+public class UpdateVehiculeVO implements Serializable{
 	
 	
 	private long id;

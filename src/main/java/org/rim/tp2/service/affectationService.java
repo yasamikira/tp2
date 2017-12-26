@@ -2,7 +2,7 @@ package org.rim.tp2.service;
 
 import org.rim.tp2.domain.AffectationVc;
 
-public interface affectationService {
+public interface AffectationService {
 	
 	AffectationVc getAffectationById(Long id);
  	

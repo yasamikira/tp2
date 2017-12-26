@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -23,7 +24,7 @@ public  class Vehicule {
 	private Set<AffectationVc> affectationVcs;
 	
 	
-	@OneToMany(mappedBy = "vehicule")
+	@OneToMany(fetch=FetchType.LAZY , mappedBy = "vehicule")
 	public Set<GroupeVehicule> getGroupeVehicules() {
 		return groupeVehicules;
 	}
@@ -32,7 +33,7 @@ public  class Vehicule {
 		this.groupeVehicules = groupevehicules;
 	}
 	
-	@OneToMany(mappedBy = "vehicule")
+	@OneToMany(fetch=FetchType.LAZY , mappedBy = "vehicule")
 	public Set<AffectationVc> getAffectationVcs() {
 		return affectationVcs;
 	}

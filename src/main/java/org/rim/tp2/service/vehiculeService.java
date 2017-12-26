@@ -1,14 +1,16 @@
 package org.rim.tp2.service;
 
-import org.rim.tp2.domain.Vehicule;
+import org.rim.tp2.domain.vo.CreateVehiculeVO;
+import org.rim.tp2.domain.vo.UpdateVehiculeVO;
+import org.rim.tp2.domain.vo.VehiculeVO;
 
-public interface vehiculeService {
+public interface VehiculeService {
 
-	Vehicule getVehiculeById(Long id);
+	VehiculeVO getVehiculeById(Long id);
  	
-	Vehicule createVehicule(Vehicule g);
+	VehiculeVO createVehicule(CreateVehiculeVO g);
  	
-	Vehicule updateVehicule(Vehicule  g);
+	VehiculeVO updateVehicule(UpdateVehiculeVO  g);
  	
-    void deleteVehicule(Long id);
+	VehiculeVO deleteVehicule(Long id);
 }

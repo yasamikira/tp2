@@ -1,38 +1,45 @@
 package org.rim.tp2.service.impl;
 
 import org.rim.tp2.domain.Chauffeur;
-import org.rim.tp2.domain.repo.chauffeurRepository;
+import org.rim.tp2.domain.assembler.ChauffeurAssembler;
+import org.rim.tp2.domain.repo.ChauffeurRepository;
+import org.rim.tp2.domain.vo.ChauffeurVO;
+import org.rim.tp2.domain.vo.CreateChauffeurVO;
+import org.rim.tp2.domain.vo.UpdateChauffeurVO;
 import org.rim.tp2.exception.ResourceNotFoundException;
-import org.rim.tp2.service.chauffeurService;
+import org.rim.tp2.service.ChauffeurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class chauffeurServiceImpl implements chauffeurService {
+public class ChauffeurServiceImpl implements ChauffeurService {
 
 	@Autowired
-	private chauffeurRepository repository;
+	private ChauffeurRepository repository;
+	@Autowired
+	private ChauffeurAssembler assembler;
 	
-	public Chauffeur getChauffeurById(Long id) {
+	public ChauffeurVO getChauffeurById(Long id) {
 		Chauffeur user= repository.findOne(id);
     	if (user == null) {
             throw new ResourceNotFoundException(id, "driver not found");
         }
-    	return user;
+    	return assembler.tochauffeurVO(user);
 	}
 
-	public Chauffeur createChauffeur(Chauffeur chauffeur) {
-		return repository.save(chauffeur);
+	public ChauffeurVO createChauffeur(CreateChauffeurVO chauffeur) {
+		return assembler.tochauffeurVO(repository.save(assembler.tochauffeur(chauffeur)));
 	}
 
-	public Chauffeur updateChauffeur(Chauffeur chauffeur) {
-		return repository.save(chauffeur);
+	public ChauffeurVO updateChauffeur(UpdateChauffeurVO chauffeur) {
+		return assembler.tochauffeurVO(repository.save(assembler.tochauffeur(chauffeur)));
 	}
 
-	public void deleteChauffeur(Long id) {
+	public ChauffeurVO deleteChauffeur(Long id) {
 		Chauffeur c = repository.getOne(id);
 			if(c!=null)
 				repository.delete(c);
+			return c!=null?assembler.tochauffeurVO(c):null;
 	}
 
 }

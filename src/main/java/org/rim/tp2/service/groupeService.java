@@ -1,15 +1,17 @@
 package org.rim.tp2.service;
 
-import org.rim.tp2.domain.Groupe;
+import org.rim.tp2.domain.vo.CreateGroupeVO;
+import org.rim.tp2.domain.vo.GroupeVO;
+import org.rim.tp2.domain.vo.UpdateGroupeVO;
 
-public interface groupeService {
+public interface GroupeService {
 	
-	Groupe getGroupeById(Long id);
+	GroupeVO getGroupeById(Long id);
  	
-	Groupe createGroupe(Groupe g);
+	GroupeVO createGroupe(CreateGroupeVO g);
  	
-	Groupe updateGroupe(Groupe g);
+	GroupeVO updateGroupe(UpdateGroupeVO g);
  	
-    void deleteGroupe(Long id);
+	GroupeVO deleteGroupe(Long id);
 
 }

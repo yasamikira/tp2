@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -22,7 +23,7 @@ public class Chauffeur {
 	private Set<AffectationVc> affectationVcs;
 	
 	
-	@OneToMany(mappedBy = "chauffeur")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy = "chauffeur")
 	public Set<AffectationVc> getAffectationVcs() {
 		return affectationVcs;
 	}

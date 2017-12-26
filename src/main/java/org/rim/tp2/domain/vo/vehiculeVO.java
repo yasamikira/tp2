@@ -1,8 +1,9 @@
 package org.rim.tp2.domain.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class vehiculeVO {
+public class VehiculeVO implements Serializable{
 
 	private Long vehiculeId;
 	private String marque;

@@ -1,6 +1,8 @@
 package org.rim.tp2.domain.vo;
 
-public class updateGroupeVO {
+import java.io.Serializable;
+
+public class UpdateGroupeVO implements Serializable{
 	
 	private long id;
 	private String nom;

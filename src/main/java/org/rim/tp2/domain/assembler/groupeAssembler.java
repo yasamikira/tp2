@@ -1,14 +1,14 @@
 package org.rim.tp2.domain.assembler;
 
 import org.rim.tp2.domain.Groupe;
-import org.rim.tp2.domain.vo.createGroupeVO;
-import org.rim.tp2.domain.vo.groupeVO;
-import org.rim.tp2.domain.vo.updateGroupeVO;
+import org.rim.tp2.domain.vo.CreateGroupeVO;
+import org.rim.tp2.domain.vo.GroupeVO;
+import org.rim.tp2.domain.vo.UpdateGroupeVO;
 import org.springframework.stereotype.Component;
 
 @Component//synglton par defaut
 //@Scope("prototype")
-public class groupeAssembler {
+public class GroupeAssembler {
 
 	/**
      * CreategroupeVO convert to groupe.
@@ -16,7 +16,7 @@ public class groupeAssembler {
      * @param creategroupeVO
      * @return
      */
-    public Groupe togroupe(createGroupeVO creategroupeVO) {
+    public Groupe togroupe(CreateGroupeVO creategroupeVO) {
         Groupe groupe = new Groupe();
         groupe.setNom(creategroupeVO.getNom());
         
@@ -30,8 +30,8 @@ public class groupeAssembler {
      * @param groupe
      * @return
      */
-    public groupeVO togroupeVO(Groupe groupe) {
-        groupeVO groupeVO = new groupeVO();
+    public GroupeVO togroupeVO(Groupe groupe) {
+        GroupeVO groupeVO = new GroupeVO();
         groupeVO.setGroupeId(groupe.getId());
         groupeVO.setNom(groupe.getNom());
         groupeVO.setCreated(groupe.getCreated());
@@ -47,7 +47,7 @@ public class groupeAssembler {
      * @param updategroupeVO
      * @return
      */
-    public Groupe togroupe(updateGroupeVO updategroupeVO) {
+    public Groupe togroupe(UpdateGroupeVO updategroupeVO) {
         Groupe groupe = new Groupe();
         groupe.setId(updategroupeVO.getId());
         groupe.setNom(updategroupeVO.getNom());

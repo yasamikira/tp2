@@ -1,8 +1,9 @@
 package org.rim.tp2.domain.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class groupeVO {
+public class GroupeVO implements Serializable{
 
 	private Long groupeId;
 	private String nom;

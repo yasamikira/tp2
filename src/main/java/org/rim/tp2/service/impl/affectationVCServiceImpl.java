@@ -1,17 +1,17 @@
 package org.rim.tp2.service.impl;
 
 import org.rim.tp2.domain.AffectationVc;
-import org.rim.tp2.domain.repo.AffectationVCRepository;
+import org.rim.tp2.domain.repo.AffectationVcRepository;
 import org.rim.tp2.exception.ResourceNotFoundException;
-import org.rim.tp2.service.affectationService;
+import org.rim.tp2.service.AffectationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class affectationVCServiceImpl implements affectationService {
+public class AffectationVcServiceImpl implements AffectationService {
 
 	@Autowired
-	private AffectationVCRepository repository;
+	private AffectationVcRepository repository;
 	
 	public AffectationVc getAffectationById(Long id) {
 		AffectationVc a = repository.findOne(id);

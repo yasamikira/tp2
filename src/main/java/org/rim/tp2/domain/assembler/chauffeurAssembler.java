@@ -1,14 +1,14 @@
 package org.rim.tp2.domain.assembler;
 
 import org.rim.tp2.domain.Chauffeur;
-import org.rim.tp2.domain.vo.chauffeurVO;
-import org.rim.tp2.domain.vo.createChauffeurVO;
-import org.rim.tp2.domain.vo.updateChauffeurVO;
+import org.rim.tp2.domain.vo.ChauffeurVO;
+import org.rim.tp2.domain.vo.CreateChauffeurVO;
+import org.rim.tp2.domain.vo.UpdateChauffeurVO;
 import org.springframework.stereotype.Component;
 
 @Component//synglton par defaut
 //@Scope("prototype")
-public class chauffeurAssembler {
+public class ChauffeurAssembler {
 
 	/**
      * CreatechauffeurVO convert to chauffeur.
@@ -16,7 +16,7 @@ public class chauffeurAssembler {
      * @param createchauffeurVO
      * @return
      */
-    public Chauffeur tochauffeur(createChauffeurVO createchauffeurVO) {
+    public Chauffeur tochauffeur(CreateChauffeurVO createchauffeurVO) {
         Chauffeur chauffeur = new Chauffeur();
         chauffeur.setFname(createchauffeurVO.getFname());
         chauffeur.setLname(createchauffeurVO.getLname());
@@ -33,8 +33,8 @@ public class chauffeurAssembler {
      * @param chauffeur
      * @return
      */
-    public chauffeurVO tochauffeurVO(Chauffeur chauffeur) {
-        chauffeurVO chauffeurVO = new chauffeurVO();
+    public ChauffeurVO tochauffeurVO(Chauffeur chauffeur) {
+        ChauffeurVO chauffeurVO = new ChauffeurVO();
         chauffeurVO.setChauffeurId(chauffeur.getId());
         chauffeurVO.setFname(chauffeur.getFname());
         chauffeurVO.setLname(chauffeur.getLname());
@@ -52,7 +52,7 @@ public class chauffeurAssembler {
      * @param updatechauffeurVO
      * @return
      */
-    public Chauffeur tochauffeur(updateChauffeurVO updatechauffeurVO) {
+    public Chauffeur tochauffeur(UpdateChauffeurVO updatechauffeurVO) {
         Chauffeur chauffeur = new Chauffeur();
         chauffeur.setId(updatechauffeurVO.getId());
         chauffeur.setFname(updatechauffeurVO.getFname());
