@@ -1,18 +1,22 @@
 package org.rim.tp2.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class AffectationVc {
+@Table(name="affectation_vc",catalog="tp2")
+public class AffectationVc implements Serializable{
 
-	@Id @GeneratedValue
+	
 	private long id;
 	private Vehicule vehicule;
 	private Chauffeur chauffeur;
@@ -30,6 +34,7 @@ public class AffectationVc {
 		this.dure = dure;
 	}
 
+	@Id @GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -41,7 +46,7 @@ public class AffectationVc {
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "vehicule_id")
+	@JoinColumn(name = "vehicule_id",nullable=false)
 	public Vehicule getVehicule() {
 		return vehicule;
 	}
@@ -51,8 +56,8 @@ public class AffectationVc {
 	}
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "chauffeur_id")
+	@ManyToOne
+	@JoinColumn(name = "chauffeur_id", nullable=false)
 	public Chauffeur getChauffeur() {
 		return chauffeur;
 	}
@@ -66,7 +71,6 @@ public class AffectationVc {
 	public Date getDateAff() {
 		return dateAff;
 	}
-
 	public void setDateAff(Date dateAff) {
 		this.dateAff = dateAff;
 	}

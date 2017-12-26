@@ -1,18 +1,23 @@
 package org.rim.tp2.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Chauffeur {
+@Table(name="chauffeur",catalog="tp2")
+public class Chauffeur implements Serializable{
 
-	@Id @GeneratedValue
+	
 	private long id;
 	private String fname;
 	private String lname;
@@ -20,15 +25,15 @@ public class Chauffeur {
 	private long ref;
 	private Date created;
 	private Date updated;
-	private Set<AffectationVc> affectationVcs;
+	private Set<AffectationVc> affectationVcs=new HashSet<AffectationVc>(0);
 	
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "chauffeur")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chauffeur")
 	public Set<AffectationVc> getAffectationVcs() {
 		return affectationVcs;
 	}
 
-	public void setAffectationVCs(Set<AffectationVc> affectationVCs) {
+	public void setAffectationVcs(Set<AffectationVc> affectationVCs) {
 		this.affectationVcs = affectationVCs;
 	}
 
@@ -43,6 +48,7 @@ public class Chauffeur {
 		this.ref = ref;
 	}
 
+	@Id @GeneratedValue
 	public long getId() {
 		return id;
 	}

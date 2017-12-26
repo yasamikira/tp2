@@ -1,6 +1,8 @@
 package org.rim.tp2.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,16 +10,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Groupe {
+@Table(name="groupe",catalog="tp2")
+public class Groupe implements Serializable{
 
-	@Id @GeneratedValue
 	private long id;
 	private String nom;
 	private Date created;
 	private Date  updated;
-	private Set<GroupeVehicule> groupeVehicules;
+	private Set<GroupeVehicule> groupeVehicules=new HashSet<GroupeVehicule>(0);;
 	
 	
 	
@@ -40,7 +43,7 @@ public class Groupe {
 		this.created = created;
 		this.updated = pdated;
 	}
-
+	@Id @GeneratedValue
 	public long getId() {
 		return id;
 	}

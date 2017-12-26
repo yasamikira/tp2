@@ -1,11 +1,14 @@
 package org.rim.tp2.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class GroupeVehicule {
+@Table(name="groupe_vehicule",catalog="tp2")
+public class GroupeVehicule implements Serializable{
 
-	@Id @GeneratedValue
+	
 	private long id;
 	private Groupe groupe;
 	private Vehicule vehicule;
@@ -18,11 +21,22 @@ public class GroupeVehicule {
 		this.vehicule = vehicule;
 	}
 	
+	@Id @GeneratedValue
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
 	@ManyToOne
 	@JoinColumn(name = "groupe_id")
 	public Groupe getGroupe() {
 		return groupe;
 	}
+	
 	public void setGroupe(Groupe groupe) {
 		this.groupe = groupe;
 	}
