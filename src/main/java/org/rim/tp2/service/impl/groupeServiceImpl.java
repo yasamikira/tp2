@@ -1,5 +1,7 @@
 package org.rim.tp2.service.impl;
 
+import java.util.List;
+
 import org.rim.tp2.domain.Groupe;
 import org.rim.tp2.domain.assembler.GroupeAssembler;
 import org.rim.tp2.domain.repo.GroupeRepository;
@@ -14,10 +16,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class GroupeServiceImpl implements GroupeService {
 
+	/**
+	 * doing CRUD by using repository
+	 * */
+	
 	@Autowired
 	private GroupeRepository repository;
 	@Autowired
 	private GroupeAssembler assembler;
+	
+	/**
+	 * return object with id passed on parametre 
+	 * */
 	
 	public GroupeVO getGroupeById(Long id) {
 		Groupe g= repository.findOne(id);
@@ -27,20 +37,40 @@ public class GroupeServiceImpl implements GroupeService {
     	return assembler.togroupeVO(g);
 	}
 
+	/**
+	 * create object 
+	 * **/
+
+	
 	public GroupeVO createGroupe(CreateGroupeVO g) {
 		return assembler.togroupeVO(repository.save(assembler.togroupe(g)));
 	}
 
+	/**
+	 * update object 
+	 * */
+	
+	
 	public GroupeVO updateGroupe(UpdateGroupeVO g) {
 		return assembler.togroupeVO(repository.save(assembler.togroupe(g)));
 	}
 
+	/**
+	 * delete object
+	 * */
 	public GroupeVO deleteGroupe(Long id) {
 		Groupe g=repository.getOne(id);
 			if(g!=null)
 				repository.delete(g);
 			return g!=null? assembler.togroupeVO(g):null;
 
+	}
+
+	/**
+	 * get all objects
+	 * */
+	public List<GroupeVO> getAll() {
+		return assembler.togroupeVOs(repository.findAll());
 	}
 
 }

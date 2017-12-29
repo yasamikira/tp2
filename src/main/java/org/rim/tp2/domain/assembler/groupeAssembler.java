@@ -1,5 +1,8 @@
 package org.rim.tp2.domain.assembler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.rim.tp2.domain.Groupe;
 import org.rim.tp2.domain.vo.CreateGroupeVO;
 import org.rim.tp2.domain.vo.GroupeVO;
@@ -54,4 +57,16 @@ public class GroupeAssembler {
         
         return groupe;
     }
+
+    /*
+     * convert list of groupe to list of groupeVO
+     * */
+
+	public List<GroupeVO> togroupeVOs(List<Groupe> findAll) {
+		List<GroupeVO> l=new ArrayList<GroupeVO>();
+		for (Groupe groupe : findAll) {
+			l.add(togroupeVO(groupe));
+		}
+		return l;
+	}
 }

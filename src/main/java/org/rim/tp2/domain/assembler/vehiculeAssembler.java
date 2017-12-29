@@ -1,5 +1,8 @@
 package org.rim.tp2.domain.assembler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.rim.tp2.domain.Vehicule;
 import org.rim.tp2.domain.vo.CreateVehiculeVO;
 import org.rim.tp2.domain.vo.UpdateVehiculeVO;
@@ -59,4 +62,17 @@ public class VehiculeAssembler {
         
         return vehicule;
     }
+
+    /*
+     * 
+     * convert list of vehicule to list of vehiculeVO
+     * */
+
+	public List<VehiculeVO> tovehiculeVOs(List<Vehicule> findAll) {
+		List<VehiculeVO> l=new ArrayList<VehiculeVO>(); 
+		for (Vehicule vehicule : findAll) {
+			l.add(tovehiculeVO(vehicule));
+		}
+		return l;
+	}
 }

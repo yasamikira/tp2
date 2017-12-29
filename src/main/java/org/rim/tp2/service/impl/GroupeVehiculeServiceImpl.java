@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class GroupeVehiculeServiceImpl implements GroupeVehiculeService {
 
+	/**
+	 * doing CRUD by using repository
+	 * */
 	@Autowired
 	private GroupeVehiculeRepository repository;
 	

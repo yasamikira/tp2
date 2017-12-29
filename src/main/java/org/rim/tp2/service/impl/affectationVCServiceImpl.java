@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class AffectationVcServiceImpl implements AffectationService {
 
+	/**
+	 * doing CRUD by using repository
+	 * */
+	
 	@Autowired
 	private AffectationVcRepository repository;
 	

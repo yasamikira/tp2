@@ -1,10 +1,13 @@
 package org.rim.tp2.controller;
 
+import java.util.List;
+
 import org.rim.tp2.domain.vo.ChauffeurVO;
 import org.rim.tp2.domain.vo.CreateChauffeurVO;
 import org.rim.tp2.domain.vo.UpdateChauffeurVO;
 import org.rim.tp2.service.ChauffeurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/chauffeur")
+/*allow acces to controller*/
+@CrossOrigin
 public class ChauffeurController {
 
 //	@Autowired
@@ -24,6 +29,10 @@ public class ChauffeurController {
     @Autowired
     private ChauffeurService chauffeurService;
  
+    @GetMapping("/all")
+    public List<ChauffeurVO> getchauffeurs() {
+    	return chauffeurService.getAll();
+    }
     //@ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public ChauffeurVO getchauffeur(@PathVariable("id") Long id) {

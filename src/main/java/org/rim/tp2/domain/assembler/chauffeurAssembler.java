@@ -1,5 +1,8 @@
 package org.rim.tp2.domain.assembler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.rim.tp2.domain.Chauffeur;
 import org.rim.tp2.domain.vo.ChauffeurVO;
 import org.rim.tp2.domain.vo.CreateChauffeurVO;
@@ -62,4 +65,15 @@ public class ChauffeurAssembler {
         
         return chauffeur;
     }
+
+    /*
+     * convert list or chauffeur to chauffeurVO
+     * */
+	public List<ChauffeurVO> tochauffeurVOs(List<Chauffeur> findAll) {
+		List<ChauffeurVO> l=new ArrayList<ChauffeurVO>();
+		for (Chauffeur chauffeur : findAll) {
+			l.add(tochauffeurVO(chauffeur));
+		}
+		return l;
+	}
 }
